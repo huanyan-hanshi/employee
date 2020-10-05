@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lin.dao.EmployeeDao">
+    <resultMap id="employee" type="com.lin.pojo.Employee">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="password" column="password"/>
+    </resultMap>
+    <select id="get" resultMap="employee">
+        select * from employee where id=#{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from employee where id=#{id}
+    </delete>
+    <insert id="add" parameterType="employee">
+        insert into employee (id,name,age,sex,address,phone,password) values (#{id},#{name},#{age},#{sex},#{address},#{phone},#{password})
+    </insert>
+    <update id="update" parameterType="employee">
+        update employee set (id=#{id},name=#{name},age=#{age},sex=#{sex},address=#{address},phone=#{phone},password=#{password})
+        where id=#{id}
+    </update>
+    <select id="gets" resultMap="employee">
+        select * from employee
+    </select>
+</mapper>
+
+
